@@ -24,8 +24,9 @@ const AddPeoples = () => {
   const formik = useFormik({
     initialValues: {
       name: "",
-      age: "",
+      birthYaer: "",
       imageURL: "",
+      Genre:""
     },
     validationSchema: PeopleValidation,
     onSubmit: handleSubmit,
@@ -50,13 +51,13 @@ const AddPeoples = () => {
         <input
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          value={formik.values.age}
-          placeholder="enter age"
+          value={formik.values.birthYaer}
+          placeholder="enter birthYaer"
           type="number"
-          name="age"
+          name="birthYaer"
         />
-        {formik.errors.age && formik.touched.age && (
-          <span>{formik.errors.age}</span>
+        {formik.errors.birthYaer && formik.touched.birthYaer && (
+          <span>{formik.errors.birthYaer}</span>
         )}
         <input
           onChange={formik.handleChange}
@@ -68,6 +69,17 @@ const AddPeoples = () => {
         />
         {formik.errors.imageURL && formik.touched.imageURL && (
           <span>{formik.errors.imageURL}</span>
+        )}
+         <input
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.Genre}
+          placeholder="enter genre"
+          type="text"
+          name="Genre"
+        />
+        {formik.errors.Genre && formik.touched.Genre && (
+          <span>{formik.errors.Genre}</span>
         )}
         <button
           disabled={Object.keys(formik.errors).length !== 0 ? true : false}

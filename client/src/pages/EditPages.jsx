@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { editArtist, editPeoples, getPeoplesByID } from "../api/request";
+import { editPeoples, getPeoplesByID } from "../api/request";
 import { Button, TextField, Typography } from "@mui/material";
 import { useFormik } from "formik";
 
@@ -15,8 +15,9 @@ const EditPages = () => {
     getPeoplesByID(id).then((res) => {
       setPeople(res);
       formik.values.name = res.name;
-      formik.values.age = res.age;
-      formik.values.imageURL = res.imageURL;
+      formik.values.birthYaer = res.birthYaer;
+      formik.values.ImageURL = res.ImageURL;
+      formik.values.Genre = res.Genre;
       setLoading(false);
     });
   }, [id]);
@@ -30,8 +31,9 @@ const EditPages = () => {
   const formik = useFormik({
     initialValues: {
       name: people.name,
-      age: people.age,
-      imageURL: people.imageURL,
+      birthYaer: people.birthYaer,
+      ImageURL: people.ImageURL,
+      Genre:people.Genre
     },
     onSubmit: handleEdit,
   });
@@ -54,17 +56,18 @@ const EditPages = () => {
         />
          <TextField
           type="number"
-          placeholder="people age"
-          name="age"
-          value={formik.values.age}
+          placeholder="people birthYear"
+          name="birthYear"
+          value={formik.values.birthYaer}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
         />
-         <TextField
+        
+        <TextField
           type="text"
-          placeholder="people image"
-          name="imageURL"
-          value={formik.values.imageURL}
+          placeholder="people genre"
+          name="Genre"
+          value={formik.values.Genre}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
         />

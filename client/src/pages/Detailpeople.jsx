@@ -37,7 +37,8 @@ const DetailPeople = () => {
                 >
                   <Typography>{people.name}</Typography>
                   <Button variant='contained' color="primary"><Link style={{color:'white'}} to='/peoples'>Go Back</Link></Button>
-                  <Typography>age: {people.age}</Typography>
+                  <Typography>birthYaer: {people.birthYaer}</Typography>
+                  <Typography>Genre: {people.Genre}</Typography>
                 </Card>
               </Grid>
       </Grid>

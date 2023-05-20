@@ -37,17 +37,7 @@ const Peoples = () => {
             label="Search Peoples"
             variant="outlined"
           />
-          <Button
-            variant="contained"
-            color="success"
-            style={{marginLeft:'10px'}}
-            onClick={() => {
-              let sortedPeoples = [...peoples.sort((a, b) => a.age - b.age)];
-              setPeoples(sortedPeoples);
-            }}
-          >
-            Sort by Age
-          </Button>
+        
         </div>
 
         <Grid container spacing={2}>
@@ -72,7 +62,9 @@ const Peoples = () => {
                     <Typography>
                       <Link to={`/peoples/${people._id}`}>{people.name}</Link>
                     </Typography>
-                    <Typography>age: {people.age}</Typography>
+                    <Typography>Genre: {people.Genre}</Typography>
+                    
+                    <Typography>birthYaer: {people.birthYaer}</Typography>
                     <Button
                       onClick={() => {
                         Swal.fire({

@@ -13,29 +13,17 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const mongoose = require('mongoose');
-const PEOPLES = [
-    {
-      id: 1,
-      name: "Tyler the Creator",
-      imageURL:
-        "https://i.scdn.co/image/ab676161000051748278b782cbb5a3963db88ada",
-      age: 70,
-    },
-    {
-      id: 2,
-      name: "Kanye West",
-      imageURL:
-        "https://www.thenews.com.pk/assets/uploads/updates/2023-05-15/1070367_8385471_Untitled-1_updates.jpg",
-      age: 45,
-    },
-  ];
+
 
   const PeopleSchema = new mongoose.Schema({
     name:String,
-    age:Number,
-    imageURL:String
+    birthYaer:Number,
+    Genre:String,
+    isDead:Boolean,
+    isMale :Boolean,
+    ImageURL:String
   });
-  const MyModel = mongoose.model('ModelPeople',PeopleSchema);
+  const MyModel = mongoose.model('authors',PeopleSchema);
 
   DB_PASSWORD=process.env.DB_PASSWORD
 DB_CONNECTION=process.env.DB_CONNECTION
@@ -106,11 +94,14 @@ app.delete("/api/peoples/:id", async(req, res) => {
   });
   //post
 app.post("/api/peoples",async(req, res) => {
-    const { name, age, imageURL } = req.body;
+    const { name, birthYaer, imageURL,isDead, isMale,Genre } = req.body;
     const newPeoples = new MyModel({
       name: name,
       imageURL: imageURL,
-      age: age,
+      birthYaer:birthYaer,
+      isDead:isDead,
+      isMale:isMale,
+      Genre:Genre
     });
    await  newPeoples.save()
     res.status(201).send("created");
@@ -119,8 +110,8 @@ app.post("/api/peoples",async(req, res) => {
 //put
 app.put("/api/peoples/:id",async (req, res) => {
     const id = req.params.id;
-    const { name, age, imageURL } = req.body;
-    const existedPeoples =await MyModel.findByIdAndUpdate(id,{name:name, age:age, imageURL:imageURL})
+    const { name, birthYaer, isDead,isMale,Genre, imageURL } = req.body;
+    const existedPeoples =await MyModel.findByIdAndUpdate(id,{name:name, birthYaer:birthYaer,isDead:isDead, isMale:isMale,Genre:Genre, imageURL:imageURL,})
     if (existedPeoples == undefined) {
       res.status(404).send("peoples not found!");
     } else {

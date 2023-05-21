@@ -7,7 +7,7 @@ export const PeopleValidation = yup.object().shape({
     .integer("age must be an integer")
     .positive("age cannot be negative number")
     .required("age is required"),
-  imageURL: yup
+    ImageURL: yup
     .string()
     .required("image is required"),
     Genre: yup 
@@ -15,3 +15,4 @@ export const PeopleValidation = yup.object().shape({
     .required("genre is required"),
    
 });
+  

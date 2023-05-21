@@ -62,6 +62,14 @@ const EditPages = () => {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
         />
+         <TextField
+          type="url"
+          placeholder="people ImageURL"
+          name="ImageURL"
+          value={formik.values.ImageURL}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+        />
         
         <TextField
           type="text"

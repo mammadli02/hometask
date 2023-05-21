@@ -19,9 +19,9 @@ const mongoose = require('mongoose');
     name:String,
     birthYaer:Number,
     Genre:String,
+    ImageURL:String,
     isDead:Boolean,
     isMale :Boolean,
-    ImageURL:String
   });
   const MyModel = mongoose.model('authors',PeopleSchema);
 
@@ -94,10 +94,10 @@ app.delete("/api/peoples/:id", async(req, res) => {
   });
   //post
 app.post("/api/peoples",async(req, res) => {
-    const { name, birthYaer, imageURL,isDead, isMale,Genre } = req.body;
+    const { name, birthYaer, ImageURL,isDead, isMale,Genre } = req.body;
     const newPeoples = new MyModel({
       name: name,
-      imageURL: imageURL,
+      ImageURL: ImageURL,
       birthYaer:birthYaer,
       isDead:isDead,
       isMale:isMale,
@@ -110,8 +110,8 @@ app.post("/api/peoples",async(req, res) => {
 //put
 app.put("/api/peoples/:id",async (req, res) => {
     const id = req.params.id;
-    const { name, birthYaer, isDead,isMale,Genre, imageURL } = req.body;
-    const existedPeoples =await MyModel.findByIdAndUpdate(id,{name:name, birthYaer:birthYaer,isDead:isDead, isMale:isMale,Genre:Genre, imageURL:imageURL,})
+    const { name, birthYaer, isDead,isMale,Genre, ImageURL } = req.body;
+    const existedPeoples =await MyModel.findByIdAndUpdate(id,{name:name, birthYaer:birthYaer,isDead:isDead, isMale:isMale,Genre:Genre, ImageURL:ImageURL,})
     if (existedPeoples == undefined) {
       res.status(404).send("peoples not found!");
     } else {

@@ -25,7 +25,7 @@ const AddPeoples = () => {
     initialValues: {
       name: "",
       birthYaer: "",
-      imageURL: "",
+      ImageURL: "",
       Genre:""
     },
     validationSchema: PeopleValidation,
@@ -62,13 +62,13 @@ const AddPeoples = () => {
         <input
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          value={formik.values.imageURL}
+          value={formik.values.ImageURL}
           placeholder="enter image"
           type="url"
-          name="imageURL"
+          name="ImageURL"
         />
-        {formik.errors.imageURL && formik.touched.imageURL && (
-          <span>{formik.errors.imageURL}</span>
+        {formik.errors.ImageURL && formik.touched.ImageURL && (
+          <span>{formik.errors.ImageURL}</span>
         )}
          <input
           onChange={formik.handleChange}

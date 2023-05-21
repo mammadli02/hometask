@@ -34,7 +34,7 @@ const Peoples = () => {
             onChange={(e) => handleSearch(e)}
             style={{ marginBottom: "30px" }}
             id="outlined-basic"
-            label="Search Peoples"
+            label="Search Authors"
             variant="outlined"
           />
         
@@ -55,7 +55,7 @@ const Peoples = () => {
                           objectPosition: "top center ",
                         }}
                         alt="example"
-                        src={people.imageURL}
+                        src={people.ImageURL}
                       />
                     }
                   >

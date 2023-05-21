@@ -31,7 +31,7 @@ const DetailPeople = () => {
                         objectPosition: "top center ",
                       }}
                       alt="example"
-                      src={people.imageURL}
+                      src={people.ImageURL}
                     />
                   }
                 >
